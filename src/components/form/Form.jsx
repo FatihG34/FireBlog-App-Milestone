@@ -3,7 +3,13 @@ import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import { Grid, Box, Stack, TextField, InputAdornment, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material'
 import React from 'react'
 
-const Form = () => {
+const Form = ({ userInfo, setUserInfo }) => {
+    const handleChange = (e) => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        setUserInfo({ ...userInfo, [name]: value })
+        console.log(userInfo);
+    }
     return (
         <Grid style={{ width: '300' }} >
             <Box>
@@ -11,12 +17,12 @@ const Form = () => {
                     <Stack spacing={4} direction='column' >
                         <TextField
                             variant='outlined'
-                            value={null}
+                            value={userInfo.username}
                             name='username'
-                            onChange={null}
+                            onChange={handleChange}
                             placeholder='Name'
                             InputProps={{
-                                startAdorment: (
+                                startAdornment: (
                                     <InputAdornment position='start' >
                                         <AccountCircle />
                                     </InputAdornment>
@@ -25,12 +31,12 @@ const Form = () => {
                         />
                         <TextField
                             variant='outlined'
-                            value={null}
+                            value={userInfo.phoneNumber}
                             name='phoneNumber'
-                            onChange={null}
+                            onChange={handleChange}
                             placeholder='Phone Number'
                             InputProps={{
-                                startAdorment: (
+                                startAdornment: (
                                     <InputAdornment position='start' >
                                         <PhoneEnabledIcon />
                                     </InputAdornment>
@@ -43,8 +49,8 @@ const Form = () => {
                                 variant='outlined'
                                 label='Gender'
                                 name='gender'
-                                value={null}
-                                onChange={null}
+                                value={userInfo.gender}
+                                onChange={handleChange}
                             >
                                 <MenuItem value='Female' >Female</MenuItem>
                                 <MenuItem value='Male' >Male</MenuItem>
