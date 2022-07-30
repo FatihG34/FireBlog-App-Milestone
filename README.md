@@ -4,4 +4,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Description : In This Project Applied Firebase Realtime Database
 
-### bu projeyi firebase database i etkili kullanabilmek için alıştırma amaçlı oluşturdum.
+### This project is Front-End course Final Project
