@@ -3,8 +3,12 @@ import { AccountCircle } from '@mui/icons-material'
 import AlternateEmailSharpIcon from '@mui/icons-material/AlternateEmailSharp';
 import KeySharpIcon from '@mui/icons-material/KeySharp';
 import { Grid, Box, Stack, TextField, InputAdornment, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material'
-import blogimg from '../../assets/blockimage.jpg'
-const Form = ({ userInfo, setUserInfo }) => {
+import blogimg from '../assets/blockimage.jpg'
+
+
+
+
+const Register = ({ userInfo, setUserInfo }) => {
     const handleChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
@@ -92,4 +96,4 @@ const Form = ({ userInfo, setUserInfo }) => {
     )
 }
 
-export default Form
+export default Register

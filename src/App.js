@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Form from './components/form/Form';
 import Table from './components/table/Table';
+import Register from './pages/Register';
 
 const initialValue = { username: '', phoneNumber: '', gender: '' }
 
@@ -10,8 +11,9 @@ function App() {
   console.log(userInfo)
   return (
     <div className="App">
-      <Form userInfo={userInfo} setUserInfo={setUserInfo} />
-      <Table />
+      {/* <Form userInfo={userInfo} setUserInfo={setUserInfo} /> */}
+      {/* <Table /> */}
+      <Register userInfo={userInfo} setUserInfo={setUserInfo} />
     </div>
   );
 }

@@ -1,8 +1,27 @@
-.App {
+/* .App {
   width: 100vw;
   height: 100vh;
   display: grid;
   place-content: center;
   grid-template-columns: 20rem 50rem;
   gap: 1rem;
+} */
+
+.register {
+  background-image: url('https://picsum.photos/1600/900');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+.blogimg {
+  width: 200px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+
 }
