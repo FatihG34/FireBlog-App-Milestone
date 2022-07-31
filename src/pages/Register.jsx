@@ -1,26 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AccountCircle } from '@mui/icons-material'
 import AlternateEmailSharpIcon from '@mui/icons-material/AlternateEmailSharp';
 import KeySharpIcon from '@mui/icons-material/KeySharp';
 import { Grid, Box, Stack, TextField, InputAdornment, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material'
-import blogimg from '../assets/blockimage.jpg'
+import blogimg from '../assets/blockimage.jpg';
+// import { Form } from 'formik';
+
+const initialValue = { firstName: '', lastName: '', email: '', password: '' }
 
 
-
-
-const Register = ({ userInfo, setUserInfo }) => {
+const Register = () => {
+    const [user, setUser] = useState(initialValue)
     const handleChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
-        setUserInfo({ ...userInfo, [name]: value })
-        console.log(userInfo);
+        // setUserInfo({ ...userInfo, [name]: value })
+        // console.log(userInfo);
     }
     return (
         <div className='register'>
             <Grid style={{ width: '25rem', backgroundColor: 'whitesmoke', padding: '2rem', borderRadius: '0.75rem', boxShadow: '18px 18px 25px black' }} >
                 <div>
                     <img className='blogimg' src={blogimg} alt="blogimage" />
-                    <h3>--Register--</h3>
+                    <h3>- Register -</h3>
                 </div>
                 <Box>
                     <form>
@@ -28,7 +30,7 @@ const Register = ({ userInfo, setUserInfo }) => {
                             <TextField
                                 type='text'
                                 variant='outlined'
-                                value={userInfo.username}
+                                value={null}
                                 name='username'
                                 onChange={handleChange}
                                 placeholder='First Name'
@@ -43,7 +45,7 @@ const Register = ({ userInfo, setUserInfo }) => {
                             <TextField
                                 type='text'
                                 variant='outlined'
-                                value={userInfo.username}
+                                value={null}
                                 name='username'
                                 onChange={handleChange}
                                 placeholder='Last Name'
@@ -58,7 +60,7 @@ const Register = ({ userInfo, setUserInfo }) => {
                             <TextField
                                 type='email'
                                 variant='outlined'
-                                value={userInfo.phoneNumber}
+                                value={null}
                                 name='email'
                                 onChange={handleChange}
                                 placeholder='e-mail'
@@ -73,7 +75,7 @@ const Register = ({ userInfo, setUserInfo }) => {
                             <TextField
                                 type='password'
                                 variant='outlined'
-                                value={userInfo.phoneNumber}
+                                value={null}
                                 name='password'
                                 onChange={handleChange}
                                 placeholder='Password'
