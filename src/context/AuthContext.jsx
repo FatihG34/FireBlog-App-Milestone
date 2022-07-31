@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { createContext, useEffect, useState } from 'react'
+import { userObserver } from '../helpers/authFunctions';
 
-const AuthContext = () => {
+
+export const AuthUserContext = createContext();
+
+const AuthContext = ({ children }) => {
+    const [currentUser, setCurrentUser] = useState();
+
+    useEffect(() => {
+        userObserver(setCurrentUser)
+    }, []);
+
+
     return (
-        <div>AuthContext</div>
+        <AuthUserContext.Provider value={{ currentUser }}>
+            {children}
+        </AuthUserContext.Provider>
     )
 }
 
