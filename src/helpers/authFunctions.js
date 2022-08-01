@@ -1,5 +1,5 @@
 import firebase from "./firebase";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
 
 
 
@@ -20,6 +20,22 @@ export const createUser = async (email, password, navigate, displayName) => {
         console.log(userCredential);
     } catch (err) {
         // toastErrorNotify(err.message);
+    }
+};
+
+export const signIn = async (email, password, navigate) => {
+    try {
+        let userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+        navigate('/');
+        // toastSuccessNotify('Logged in successfully!');
+        console.log(userCredential);
+    } catch (err) {
+        // toastErrorNotify(err.message);
+        console.log(err);
     }
 };
 
