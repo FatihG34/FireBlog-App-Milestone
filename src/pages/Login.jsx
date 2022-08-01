@@ -4,7 +4,7 @@ import { Grid, Stack, TextField, InputAdornment, Button, Box } from '@mui/materi
 import blogimg from '../assets/blockimage.jpg';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { signIn } from '../helpers/authFunctions';
+import { signIn, forgotPassword, signUpProvider } from '../helpers/authFunctions';
 import { useNavigate } from 'react-router-dom'
 
 
@@ -74,7 +74,9 @@ const Login = () => {
                                         )
                                     }}
                                 />
+                                <Button variant='text' onClick={() => forgotPassword(values.email)}>Forgot password?</Button>
                                 <Button variant='contained' type='submit' value='Submit' >Login</Button>
+                                <Button variant='contained' onClick={() => signUpProvider(navigate)} >SignIn with Google</Button>
                             </Stack>
                         </Form>
                     )}

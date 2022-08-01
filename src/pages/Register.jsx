@@ -13,7 +13,7 @@ const Register = () => {
     return (
         <div className='register'>
             <Grid style={{ width: '25rem', backgroundColor: 'whitesmoke', padding: '2rem', borderRadius: '0.75rem', boxShadow: '18px 18px 25px black' }} >
-                <Box style={{ textAlign: 'center', mb: 1 }}>
+                <Box style={{ textAlign: 'center', mb: 2 }}>
                     <img className='blogimg' src={blogimg} alt="blogimage" />
                     <h3>- Register -</h3>
                 </Box>
@@ -27,7 +27,7 @@ const Register = () => {
                     })
                     }
                     onSubmit={(values, action) => {
-                        const displayName = `${values.firstName} + ${values.lastName}`
+                        const displayName = `${values.firstName}  ${values.lastName}`
                         createUser(values.email, values.password, navigate, displayName);
 
                         action.resetForm();
@@ -115,6 +115,7 @@ const Register = () => {
                                         )
                                     }}
                                 />
+
 
                                 <Button variant='contained' type='submit' value='Submit' >Register</Button>
                             </Stack>

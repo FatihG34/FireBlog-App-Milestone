@@ -1,5 +1,5 @@
 import firebase from "./firebase";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 
 
 
@@ -53,4 +53,32 @@ export const userObserver = (setCurrentUser) => {
 
 export const logOut = () => {
     signOut(auth);
+};
+
+export const forgotPassword = (email) => {
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            // Password reset email sent!
+            // toastWarnNotify('Please check your mail box!');
+            alert("Please check your mail box!");
+        })
+        .catch((err) => {
+            // toastErrorNotify(err.message);
+            alert(err.message);
+            // ..
+        });
+};
+
+export const signUpProvider = (navigate) => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            console.log(result);
+            navigate('/');
+            // toastSuccessNotify('Logged out successfully!');
+        })
+        .catch((error) => {
+            // Handle Errors here.
+            console.log(error);
+        });
 };
