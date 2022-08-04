@@ -22,6 +22,8 @@ const NewBlog = () => {
                         label='Image URL *'
                         type='email'
                         id="outlined-size-normal"
+                        name='imageURL'
+
                     />
                     <TextField
                         label='Content *'
