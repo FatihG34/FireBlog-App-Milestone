@@ -1,8 +1,17 @@
-import React from 'react'
+import { createContext, useState } from 'react'
 
-const BlogContext = () => {
+
+const initialValue = { title: '', imageUrl: '', content: '' }
+
+export const DataBlogContext = createContext()
+
+const BlogContext = ({ children }) => {
+    const [blogData, setBlogData] = useState(initialValue)
+
     return (
-        <div>BlogContext</div>
+        <DataBlogContext.Provider value={{ blogData, setBlogData }}>
+            {children}
+        </DataBlogContext.Provider>
     )
 }
 
