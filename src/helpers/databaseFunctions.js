@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 const database = getDatabase(firebase)
 
 export const addData = (blogData) => {
+
     const dataRef = ref(database, 'blogdatas/');
     const newDataRef = push(dataRef);
     set(newDataRef, {

@@ -11,54 +11,63 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import { Box, Grid } from '@mui/material';
+import { useFetch } from '../helpers/databaseFunctions';
+import { AuthUserContext } from '../context/AuthContext';
 
 
 const Dashboard = () => {
+    const { isLoading, dataList } = useFetch();
+    const { currentUser } = React.useContext(AuthUserContext)
+
+    console.log(currentUser)
+
+    console.log(dataList);
 
     return (
-        <Box sx={{ display: 'grid', placeContent: 'center' }}>
-            <Grid container spacing={2} sx={{ margin: '1rem' }}>
+        <Box sx={{ display: 'grid', placeContent: 'center', padding: 3 }}>
+            <Grid container spacing={2}>
+                {dataList?.map((data, index) => (
+                    <Grid item xs={3}>
+                        <Card sx={{ maxWidth: 400 }}>
+                            <CardMedia
+                                component="img"
+                                height="194"
+                                image={data.imageUrl}
+                                alt={data.title}
+                            // sx={{ width: '300px', height: '250px' }}
+                            />
+                            <CardHeader
+                                title={data.title}
+                                subheader={(currentUser.metadata.creationTime).slice(5, 16)}
+                            />
+                            <CardContent>
+                                <Typography variant="body2" color="text.secondary" className='data-content'>
+                                    {data.content}
+                                </Typography>
+                            </CardContent>
+                            <CardHeader
+                                avatar={
+                                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                        {(currentUser.displayName).slice(0, 1)}
+                                    </Avatar>
+                                }
+                                // title="Shrimp and Chorizo Paella"
+                                title={currentUser.email}
+                            />
+                            <CardActions disableSpacing>
+                                <IconButton aria-label="add to favorites">
+                                    <FavoriteIcon />
+                                </IconButton>
+                                <IconButton aria-label="share">
+                                    <ChatBubbleOutlineOutlinedIcon />
+                                </IconButton>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                ))}
 
-                <Grid item xs={8}>
-                    <Card sx={{ maxWidth: 500 }}>
-                        <CardMedia
-                            component="img"
-                            height="194"
-                            image="/static/images/cards/paella.jpg"
-                            alt="Paella dish"
-                        />
-                        <CardHeader
-                            title="Shrimp and Chorizo Paella"
-                            subheader="September 14, 2016"
-                        />
-                        <CardContent>
-                            <Typography variant="body2" color="text.secondary">
-                                This impressive paella is a perfect party dish and a fun meal to cook
-                                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                                if you like.
-                            </Typography>
-                        </CardContent>
-                        <CardHeader
-                            avatar={
-                                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                                    R
-                                </Avatar>
-                            }
-                            title="Shrimp and Chorizo Paella"
-                        // title={data.owner}
-                        />
-                        <CardActions disableSpacing>
-                            <IconButton aria-label="add to favorites">
-                                <FavoriteIcon />
-                            </IconButton>
-                            <IconButton aria-label="share">
-                                <ChatBubbleOutlineOutlinedIcon />
-                            </IconButton>
-                        </CardActions>
-                    </Card>
-                </Grid>
             </Grid>
-        </Box>
+        </Box >
     );
 }
 export default Dashboard

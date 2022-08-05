@@ -5,3 +5,8 @@
   font-family: 'Girassol', cursive;
   /* font-family: 'Lato', sans-serif; */
 }
+
+.data-content {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
