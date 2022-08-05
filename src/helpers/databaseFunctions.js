@@ -7,7 +7,7 @@ import { useState, useEffect } from "react"
 const database = getDatabase(firebase)
 
 export const addData = (blogData) => {
-    const dataRef = ref(database, 'blogData/');
+    const dataRef = ref(database, 'blogdatas/');
     const newDataRef = push(dataRef);
     set(newDataRef, {
         title: blogData.title,
@@ -20,7 +20,7 @@ export const useFetch = () => {
     const [isLoading, setIsLoading] = useState();
     const [dataList, setDataList] = useState();
     useEffect(() => {
-        const dataRef = ref(database, 'blogData/')
+        const dataRef = ref(database, 'blogdatas/')
         onValue(dataRef, (snapshot) => {
             const data = snapshot.val();
             const dataArray = []
@@ -36,13 +36,13 @@ export const useFetch = () => {
 };
 
 export const DeleteData = (id) => {
-    remove(ref(database, "blogData/" + id));
+    remove(ref(database, 'blogdatas/' + id));
     // Toastify("Deleted Successfully")
 }
 
 export const UpdateData = (blogData) => {
     const updates = {}
-    updates['blogData/' + blogData.id] = blogData
+    updates['blogdatas/' + blogData.id] = blogData
 
     return update(ref(database), updates)
 

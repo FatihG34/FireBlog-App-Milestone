@@ -44,7 +44,7 @@ export const userObserver = (setCurrentUser) => {
     onAuthStateChanged(auth, (user) => {
         if (user) {
             setCurrentUser(user);
-            console.log(user)
+            // console.log(user)
         } else {
             // User is signed out
             setCurrentUser(false);
