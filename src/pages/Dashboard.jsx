@@ -13,11 +13,13 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import { Box, Grid } from '@mui/material';
 import { useFetch } from '../helpers/databaseFunctions';
 import { AuthUserContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const Dashboard = () => {
     const { isLoading, dataList } = useFetch();
     const { currentUser } = React.useContext(AuthUserContext)
+    const navigate = useNavigate()
 
     console.log(currentUser)
 
@@ -27,7 +29,7 @@ const Dashboard = () => {
         <Box sx={{ display: 'grid', placeContent: 'center', padding: 3 }}>
             <Grid container spacing={2}>
                 {dataList?.map((data, index) => (
-                    <Grid item xs={3}>
+                    <Grid item xs={3} onClick={() => navigate('/details', { state: { data }, replace: false })} key={index} >
                         <Card sx={{ maxWidth: 400 }}>
                             <CardMedia
                                 component="img"

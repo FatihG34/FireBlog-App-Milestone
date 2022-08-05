@@ -1,8 +1,63 @@
-import React from 'react'
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import { Box, Grid } from '@mui/material';
+import { useFetch } from '../helpers/databaseFunctions';
+import { AuthUserContext } from '../context/AuthContext';
 
-const Details = () => {
+const Details = (data) => {
+    const { currentUser } = React.useContext(AuthUserContext);
     return (
-        <div>Details</div>
+        <Box sx={{ display: 'grid', placeContent: 'center', padding: 3 }}>
+            <Grid container spacing={2}>
+                <Grid item xs={3}>
+                    <Card sx={{ maxWidth: 400 }}>
+                        <CardMedia
+                            component="img"
+                            height="194"
+                            image={data.imageUrl}
+                            alt={data.title}
+                        // sx={{ width: '300px', height: '250px' }}
+                        />
+                        <CardHeader
+                            title={data.title}
+                            subheader={(currentUser.metadata.creationTime).slice(5, 16)}
+                        />
+                        <CardContent>
+                            <Typography variant="body2" color="text.secondary" className='data-content'>
+                                {data.content}
+                            </Typography>
+                        </CardContent>
+                        <CardHeader
+                            avatar={
+                                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                    {(currentUser.displayName).slice(0, 1)}
+                                </Avatar>
+                            }
+                            // title="Shrimp and Chorizo Paella"
+                            title={currentUser.email}
+                        />
+                        <CardActions disableSpacing>
+                            <IconButton aria-label="add to favorites">
+                                <FavoriteIcon />
+                            </IconButton>
+                            <IconButton aria-label="share">
+                                <ChatBubbleOutlineOutlinedIcon />
+                            </IconButton>
+                        </CardActions>
+                    </Card>
+                </Grid>
+            </Grid>
+        </Box >
     )
 }
 
