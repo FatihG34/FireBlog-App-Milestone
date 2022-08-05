@@ -21,32 +21,36 @@ const Dashboard = () => {
     const { currentUser } = React.useContext(AuthUserContext)
     const navigate = useNavigate()
 
-    console.log(currentUser)
+    // console.log(currentUser)
 
-    console.log(dataList);
+    // console.log(dataList);
 
     return (
         <Box sx={{ display: 'grid', placeContent: 'center', padding: 3 }}>
             <Grid container spacing={2}>
                 {dataList?.map((data, index) => (
-                    <Grid item xs={3} onClick={() => navigate('/details', { state: { data }, replace: false })} key={index} >
+                    <Grid item xs={3} key={index} >
                         <Card sx={{ maxWidth: 400 }}>
-                            <CardMedia
-                                component="img"
-                                height="194"
-                                image={data.imageUrl}
-                                alt={data.title}
-                            // sx={{ width: '300px', height: '250px' }}
-                            />
-                            <CardHeader
-                                title={data.title}
-                                subheader={(currentUser.metadata.creationTime).slice(5, 16)}
-                            />
-                            <CardContent>
-                                <Typography variant="body2" color="text.secondary" className='data-content'>
-                                    {data.content}
-                                </Typography>
-                            </CardContent>
+                            <Box onClick={() => navigate('/details', { state: { data }, replace: false })} sx={{ cursor: 'pointer' }} >
+                                <CardMedia
+                                    component="img"
+                                    height="194"
+                                    image={data.imageUrl}
+                                    alt={data.title}
+                                // sx={{ width: '300px', height: '250px' }}
+                                />
+                                <Box sx={{ backgroundColor: '#E7E6F5' }}>
+                                    <CardHeader
+                                        title={data.title}
+                                        subheader={(currentUser.metadata.creationTime).slice(5, 16)}
+                                    />
+                                    <CardContent>
+                                        <Typography variant="body2" color="text.secondary" className='data-content'>
+                                            {data.content}
+                                        </Typography>
+                                    </CardContent>
+                                </Box>
+                            </Box>
                             <CardHeader
                                 avatar={
                                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
