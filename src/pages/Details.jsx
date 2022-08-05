@@ -13,7 +13,7 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import { Box, Button, Grid, Stack } from '@mui/material';
 import { useFetch } from '../helpers/databaseFunctions';
 import { AuthUserContext } from '../context/AuthContext';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const Details = () => {
     const { currentUser } = React.useContext(AuthUserContext);
@@ -21,21 +21,25 @@ const Details = () => {
     const { data } = state
     console.log(data)
     return (
-        <Stack sx={{ width: '90vw', height: '90vh', margin: '1rem auto' }}>
+        <Stack sx={{ width: '90vw', height: '85vh', margin: '1rem auto' }}>
             <Card>
                 <CardMedia
                     component="img"
+                    // sx={{ width: '20rem' }}
                     height="60%"
                     image={data.imageUrl}
                     alt={data.title}
                 />
                 <Box sx={{ backgroundColor: '#E7E6F5' }}>
                     <CardHeader
+                        sx={{ textAlign: 'center' }}
                         title={data.title}
-                        subheader={(currentUser.metadata.creationTime).slice(5, 16)}
                     />
                     <CardContent>
-                        <Typography variant="body2" color="text.secondary" className='data-content'>
+                        <Typography variant="body2" color="text.secondary" className='data-content' sx={{ textAlign: 'center' }}>
+                            {(currentUser.metadata.creationTime).slice(5, 16)}
+                        </Typography>
+                        <Typography variant="body2" className='data-content'>
                             {data.content}
                         </Typography>
                     </CardContent>
@@ -58,10 +62,15 @@ const Details = () => {
                     </IconButton>
                 </CardActions>
             </Card>
-            <Stack spacing={6} direction="row" sx={{ margin: '1rem auto' }}>
-                <Button variant='contained' sx={{ backgroundColor: 'green' }}>Update</Button>
-                <Button variant='contained' sx={{ backgroundColor: 'red' }}>Delete</Button>
-            </Stack>
+            {currentUser
+                ?
+                <Stack spacing={6} direction="row" sx={{ margin: '1rem auto' }}>
+                    <Button variant='contained' sx={{ backgroundColor: 'green' }}>Update</Button>
+                    <Button variant='contained' sx={{ backgroundColor: 'red' }}>Delete</Button>
+                </Stack>
+                :
+                <Navigate to={'/login'} />
+            }
         </Stack >
     )
 }
