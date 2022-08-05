@@ -9,11 +9,11 @@ import { AuthUserContext } from '../context/AuthContext';
 const Profile = () => {
     const { currentUser } = React.useContext(AuthUserContext)
     return (
-        <Box sx={{ display: 'grid', placeContent: 'center', width: '100vw', height: '100vh' }}>
-            <Card sx={{ maxWidth: 750, padding: '2rem' }}>
+        <Box sx={{ display: 'grid', placeContent: 'center', width: '100vw', height: '80vh' }}>
+            <Card sx={{ maxWidth: 750, padding: '1rem', boxShadow: '2px 2px 3px 5px #0289d1a2' }}>
                 <CardMedia
                     component="img"
-                    height="140"
+                    height="300"
                     width='500'
                     image={currentUser.photoURL}
                     alt={currentUser.displayName}

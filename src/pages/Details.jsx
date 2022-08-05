@@ -10,8 +10,8 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import { Box, Button, Grid, Stack } from '@mui/material';
-import { useFetch } from '../helpers/databaseFunctions';
+import { Box, Button, Stack } from '@mui/material';
+// import { useFetch } from '../helpers/databaseFunctions';
 import { AuthUserContext } from '../context/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
 
