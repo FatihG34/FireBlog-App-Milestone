@@ -6,13 +6,14 @@ import { DataBlogContext } from '../context/BlogContext';
 import { addData } from '../helpers/databaseFunctions';
 import BlogForm from '../components/blogForm/BlogForm';
 import { AuthUserContext } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const UpdateBlog = () => {
     const { currentUser } = useContext(AuthUserContext)
-    const { blogData, setBlogData } = useContext(DataBlogContext);
     const navigate = useNavigate()
+    const { state } = useLocation();
+    const { data } = state;
 
     const handleChange = (e) => {
         e.preventDefault();

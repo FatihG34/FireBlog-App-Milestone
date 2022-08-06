@@ -74,7 +74,7 @@ const Details = () => {
                 &&
                 <Stack spacing={6} direction="row" sx={{ margin: '1rem auto' }}>
                     <Button
-                        onClick={() => navigate('/updateblog')}
+                        onClick={() => navigate('/updateblog', { state: { data } })}
                         variant='contained'
                         sx={{ backgroundColor: 'green' }}
                     >Update</Button>
