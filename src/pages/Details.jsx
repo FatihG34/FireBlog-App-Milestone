@@ -14,12 +14,13 @@ import { Box, Button, Stack } from '@mui/material';
 // import { useFetch } from '../helpers/databaseFunctions';
 import { AuthUserContext } from '../context/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
+import { DeleteData, UpdateData } from '../helpers/databaseFunctions';
 
 const Details = () => {
     const { currentUser } = React.useContext(AuthUserContext);
     const { state } = useLocation()
     const { data } = state
-    console.log(data)
+    // console.log(data)
     return (
         <Stack sx={{ width: '90vw', height: '85vh', margin: '1rem auto' }}>
             <Card>
@@ -65,8 +66,16 @@ const Details = () => {
             {currentUser
                 ?
                 <Stack spacing={6} direction="row" sx={{ margin: '1rem auto' }}>
-                    <Button variant='contained' sx={{ backgroundColor: 'green' }}>Update</Button>
-                    <Button variant='contained' sx={{ backgroundColor: 'red' }}>Delete</Button>
+                    <Button
+                        onClick={() => UpdateData()}
+                        variant='contained'
+                        sx={{ backgroundColor: 'green' }}
+                    >Update</Button>
+                    <Button
+                        onClick={() => DeleteData(data.id)}
+                        variant='contained'
+                        sx={{ backgroundColor: 'red' }}
+                    >Delete</Button>
                 </Stack>
                 :
                 <Navigate to={'/login'} />

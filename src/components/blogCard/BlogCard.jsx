@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { AuthUserContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router';
 
@@ -30,19 +29,30 @@ export default function BlogCard({ data }) {
                     alt={data.title}
                 />
                 <CardContent>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant='h5'>{data.title}</Typography>
+                    <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            display: '-webkit-box',
+                            WebkitLineClamp: '4',
+                            WebkitBoxOrient: 'vertical',
+                        }}
+                    >
                         {data.content}
                     </Typography>
                 </CardContent>
             </div>
-            <CardHeader
+            <CardHeader sx={{ ml: 2 }}
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="blog">
                         {(currentUser?.displayName).slice(0, 1)}
                     </Avatar>
                 }
                 title={currentUser?.email}
-                subheader={(currentUser.metadata.creationTime).slice(5, 16)}
+                subheader={(currentUser?.metadata.creationTime).slice(5, 16)}
             />
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
