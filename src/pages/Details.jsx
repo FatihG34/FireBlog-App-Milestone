@@ -11,7 +11,6 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import { Box, Button, Stack } from '@mui/material';
-// import { useFetch } from '../helpers/databaseFunctions';
 import { AuthUserContext } from '../context/AuthContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { DeleteData } from '../helpers/databaseFunctions';
@@ -21,6 +20,12 @@ const Details = () => {
     const { currentUser } = React.useContext(AuthUserContext);
     const { state } = useLocation();
     const { data } = state;
+    const deleteData = (id) => {
+        DeleteData(id);
+        navigate('/')
+    }
+
+
     return (
         <Stack sx={{ margin: '1rem auto', width: '75%' }}>
             <Card>
@@ -74,7 +79,7 @@ const Details = () => {
                         sx={{ backgroundColor: 'green' }}
                     >Update</Button>
                     <Button
-                        onClick={() => DeleteData(data.id)}
+                        onClick={() => deleteData(data.id)}
                         variant='contained'
                         sx={{ backgroundColor: 'red' }}
                     >Delete</Button>
