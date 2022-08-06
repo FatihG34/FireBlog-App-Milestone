@@ -1,29 +1,32 @@
 import React, { useContext } from 'react';
-// import Form from '@mui/material/FormGroup'
-import TextField from '@mui/material/TextField';
-import { Button, Grid, Stack } from '@mui/material';
+import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import blogimg from '../assets/blockimage.jpg';
 import { DataBlogContext } from '../context/BlogContext';
 import { addData } from '../helpers/databaseFunctions';
+import BlogForm from '../components/blogForm/BlogForm';
+import { AuthUserContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const NewBlog = () => {
-
+    const { currentUser } = useContext(AuthUserContext)
     const { blogData, setBlogData } = useContext(DataBlogContext);
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
-        setBlogData({ ...blogData, [name]: value })
+        const blogCreateTime = (new Date()).toString().slice(4, 16)
+        const bloger = { blogerId: currentUser.uid, blogerName: currentUser.displayName, blogerEmail: currentUser.email }
+        setBlogData({ ...blogData, [name]: value, bloger, blogCreateTime })
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         addData(blogData);
+        navigate('/')
     }
 
-    // console.log(blogData);
     return (
         <Box sx={{ display: 'grid', placeContent: 'center' }}>
             <Grid style={{ width: '30rem', padding: '2rem' }}>
@@ -31,45 +34,7 @@ const NewBlog = () => {
                     <img className='blogimg' src={blogimg} alt="blogimage" />
                     <h3>- New Blog -</h3>
                 </Box>
-                <form
-                    onSubmit={handleSubmit}
-                >
-                    <Stack spacing={3} direction='column' >
-                        <TextField
-                            label="Title *"
-                            type='text'
-                            name='title'
-                            value={blogData.title}
-                            id="outlined-size-normal"
-                            required
-                            onChange={(e) => handleChange(e)}
-                        // onChange={handleChange} same with above
-                        />
-                        <TextField
-                            label='Image URL *'
-                            type='url'
-                            name='imageUrl'
-                            value={blogData.imageURL}
-                            id="outlined-size-normal"
-                            onChange={handleChange}
-
-                        />
-                        <TextField
-                            label='Content *'
-                            name='content'
-                            value={blogData.content}
-                            multiline
-                            rows={12}
-                            maxRows={18}
-                            onChange={handleChange}
-                        />
-                        <Button
-                            variant='contained'
-                            type='submit'
-                            value='submit'
-                        >Submit</Button>
-                    </Stack>
-                </form>
+                <BlogForm handleChange={handleChange} handleSubmit={handleSubmit} />
             </Grid>
         </Box >
     )

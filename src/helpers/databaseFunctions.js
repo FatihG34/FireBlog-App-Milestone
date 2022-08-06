@@ -13,7 +13,9 @@ export const addData = (blogData) => {
     set(newDataRef, {
         title: blogData.title,
         imageUrl: blogData.imageUrl,
-        content: blogData.content
+        content: blogData.content,
+        bloger: blogData.bloger,
+        blogCreateTime: blogData.blogCreateTime
     })
 };
 

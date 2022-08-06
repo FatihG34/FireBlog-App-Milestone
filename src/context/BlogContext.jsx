@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react'
 
 
-const initialValue = { title: '', imageUrl: '', content: '' }
+const initialValue = { title: '', imageUrl: '', content: '', bloger: { blogerId: '', blogerName: '', blogerEmail: '' }, blogCreateTime: '' }
 
 export const DataBlogContext = createContext()
 

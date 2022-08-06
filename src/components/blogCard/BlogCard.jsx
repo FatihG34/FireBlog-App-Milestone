@@ -10,18 +10,15 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import { AuthUserContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router';
 
 
 export default function BlogCard({ data }) {
-    const { currentUser } = React.useContext(AuthUserContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    console.log(currentUser)
     return (
         <Card sx={{ maxWidth: 345 }}>
-            <div onClick={() => { currentUser ? navigate('/details') : navigate('/login') }} style={{ cursor: 'pointer' }}>
+            <div onClick={() => navigate('/details', /*! bu şekilde olmadı başka bir yol bulmam lazım => */ { state: data })} style={{ cursor: 'pointer' }}>
                 <CardMedia
                     component="img"
                     height="194"
@@ -48,11 +45,11 @@ export default function BlogCard({ data }) {
             <CardHeader sx={{ ml: 2 }}
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="blog">
-                        {(currentUser?.displayName).slice(0, 1)}
+                        {(data.bloger.blogerName).slice(0, 1)}
                     </Avatar>
                 }
-                title={currentUser?.email}
-                subheader={(currentUser?.metadata.creationTime).slice(5, 16)}
+                title={data.bloger.blogerEmail}
+                subheader={data.blogCreateTime}
             />
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">

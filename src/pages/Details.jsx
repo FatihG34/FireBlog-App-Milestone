@@ -16,11 +16,9 @@ import { AuthUserContext } from '../context/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
 import { DeleteData, UpdateData } from '../helpers/databaseFunctions';
 
-const Details = () => {
+const Details = (data) => {
     const { currentUser } = React.useContext(AuthUserContext);
-    const { state } = useLocation()
-    const { data } = state
-    // console.log(data)
+    console.log(data);
     return (
         <Stack sx={{ width: '90vw', height: '85vh', margin: '1rem auto' }}>
             <Card>
@@ -72,7 +70,7 @@ const Details = () => {
                         sx={{ backgroundColor: 'green' }}
                     >Update</Button>
                     <Button
-                        onClick={() => DeleteData(data.id)}
+                        // onClick={() => DeleteData(data.id)}
                         variant='contained'
                         sx={{ backgroundColor: 'red' }}
                     >Delete</Button>
