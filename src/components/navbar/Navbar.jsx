@@ -13,11 +13,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AccountCircleTwoTone } from '@mui/icons-material';
 import { logOut } from '../../helpers/authFunctions';
 import { AuthUserContext } from '../../context/AuthContext';
-// import Avatar from '@mui/material/Avatar';
-// import Button from '@mui/material/Button';
-// import MenuIcon from '@mui/icons-material/Menu';
-
-
 
 
 const Navbar = () => {
@@ -26,7 +21,6 @@ const Navbar = () => {
     const navigate = useNavigate()
 
     const settings = currentUser ? ['Profile', 'New', 'Logout'] : ['Login', 'Register'];
-    // console.log(currentUser.displayName)
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -85,7 +79,7 @@ const Navbar = () => {
                                     {
                                         setting === 'Logout'
                                             ?
-                                            <Link to={'#'} onClick={handleLogout}>{setting}</Link>
+                                            <Typography sx={{ textDecoration: 'underline', fontFamily: 'Girassol, cursive' }} onClick={handleLogout}>{setting}</Typography>
                                             :
                                             <Link to={`/${(setting).toLocaleLowerCase()}`} textAlign="center">{setting}</Link>
                                     }

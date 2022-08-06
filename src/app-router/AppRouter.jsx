@@ -22,14 +22,15 @@ const AppRouter = () => {
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/about' element={<About />} />
+                    <Route path='/details' element={<Details />} />
                     <Route path='/profile' element={<PirvateRouter />}>
                         <Route path='' element={<Profile />} />
                     </Route>
-                    <Route path='/new' element={<PirvateRouter />}>
-                        <Route path='' element={<NewBlog />} />
-                    </Route>
                     <Route path='/details' element={<PirvateRouter />}>
                         <Route path='' element={<Details />} />
+                    </Route>
+                    <Route path='/new' element={<PirvateRouter />}>
+                        <Route path='' element={<NewBlog />} />
                     </Route>
                     <Route path='/updateblog' element={<PirvateRouter />}>
                         <Route path='' element={<UpdateBlog />} />

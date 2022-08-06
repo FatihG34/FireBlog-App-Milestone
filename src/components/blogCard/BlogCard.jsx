@@ -7,7 +7,7 @@ import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { green } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import { useNavigate } from 'react-router';
@@ -18,15 +18,15 @@ export default function BlogCard({ data }) {
 
     return (
         <Card sx={{ maxWidth: 345 }}>
-            <div onClick={() => navigate('/details', /*! bu şekilde olmadı başka bir yol bulmam lazım => */ { state: { data } })} style={{ cursor: 'pointer' }}>
+            <div onClick={() => navigate('/details', { state: { data } })} style={{ cursor: 'pointer' }}>
                 <CardMedia
                     component="img"
-                    height="194"
+                    height="200"
                     image={data.imageUrl}
                     alt={data.title}
                 />
-                <CardContent>
-                    <Typography variant='h5'>{data.title}</Typography>
+                <CardContent sx={{ bgcolor: '#81abc2', height: 120 }}>
+                    <Typography variant='h6'>{data.title}</Typography>
                     <Typography
                         variant="body2"
                         color="text.secondary"
@@ -34,7 +34,7 @@ export default function BlogCard({ data }) {
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
                             display: '-webkit-box',
-                            WebkitLineClamp: '4',
+                            WebkitLineClamp: '3',
                             WebkitBoxOrient: 'vertical',
                         }}
                     >
@@ -42,9 +42,9 @@ export default function BlogCard({ data }) {
                     </Typography>
                 </CardContent>
             </div>
-            <CardHeader sx={{ ml: 2 }}
+            <CardHeader
                 avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="blog">
+                    <Avatar sx={{ bgcolor: green[500] }} aria-label="blog">
                         {(data.bloger.blogerName).slice(0, 1)}
                     </Avatar>
                 }

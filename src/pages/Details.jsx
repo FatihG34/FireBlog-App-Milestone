@@ -13,24 +13,26 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import { Box, Button, Stack } from '@mui/material';
 // import { useFetch } from '../helpers/databaseFunctions';
 import { AuthUserContext } from '../context/AuthContext';
-import { Navigate, useLocation } from 'react-router-dom';
-import { DeleteData, UpdateData } from '../helpers/databaseFunctions';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { DeleteData } from '../helpers/databaseFunctions';
 
 const Details = () => {
+    const navigate = useNavigate()
     const { currentUser } = React.useContext(AuthUserContext);
     const { state } = useLocation();
-    const { data } = state
-    console.log(data);
+    const { data } = state;
     return (
-        <Stack sx={{ width: '90vw', height: '85vh', margin: '1rem auto' }}>
+        <Stack sx={{ margin: '1rem auto', width: '75%' }}>
             <Card>
-                <CardMedia
-                    component="img"
-                    // sx={{ width: '20rem' }}
-                    height="55%"
-                    image={data.imageUrl}
-                    alt={data.title}
-                />
+                <Box sx={{ display: 'grid', placeContent: 'center' }}>
+                    <CardMedia
+                        component="img"
+                        sx={{ width: '35rem' }}
+                        // height="55%"
+                        image={data.imageUrl}
+                        alt={data.title}
+                    />
+                </Box>
                 <Box sx={{ backgroundColor: '#E7E6F5' }}>
                     <CardHeader
                         sx={{ textAlign: 'center' }}
@@ -63,11 +65,11 @@ const Details = () => {
                     </IconButton>
                 </CardActions>
             </Card>
-            {currentUser
-                ?
+            {currentUser.uid === data.bloger.blogerId
+                &&
                 <Stack spacing={6} direction="row" sx={{ margin: '1rem auto' }}>
                     <Button
-                        onClick={() => UpdateData()}
+                        onClick={() => navigate('/updateblog')}
                         variant='contained'
                         sx={{ backgroundColor: 'green' }}
                     >Update</Button>
@@ -77,8 +79,6 @@ const Details = () => {
                         sx={{ backgroundColor: 'red' }}
                     >Delete</Button>
                 </Stack>
-                :
-                <Navigate to={'/login'} />
             }
         </Stack >
     )
