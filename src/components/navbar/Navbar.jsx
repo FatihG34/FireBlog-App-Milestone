@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import FGlogo from '../../assets/logo-FG.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AccountCircleTwoTone } from '@mui/icons-material';
 import { logOut } from '../../helpers/authFunctions';
 import { AuthUserContext } from '../../context/AuthContext';
@@ -23,6 +23,7 @@ import { AuthUserContext } from '../../context/AuthContext';
 const Navbar = () => {
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const { currentUser } = React.useContext(AuthUserContext)
+    const navigate = useNavigate()
 
     const settings = currentUser ? ['Profile', 'New', 'Logout'] : ['Login', 'Register'];
     // console.log(currentUser.displayName)
@@ -33,6 +34,11 @@ const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+    const handleLogout = () => {
+        logOut();
+        navigate('/')
+
+    }
 
     return (
         <AppBar position="static" color='info'>
@@ -79,7 +85,7 @@ const Navbar = () => {
                                     {
                                         setting === 'Logout'
                                             ?
-                                            <Link to={'#'} onClick={() => logOut()}>{setting}</Link>
+                                            <Link to={'#'} onClick={handleLogout}>{setting}</Link>
                                             :
                                             <Link to={`/${(setting).toLocaleLowerCase()}`} textAlign="center">{setting}</Link>
                                     }

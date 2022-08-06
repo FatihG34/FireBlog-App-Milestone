@@ -16,8 +16,10 @@ import { AuthUserContext } from '../context/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
 import { DeleteData, UpdateData } from '../helpers/databaseFunctions';
 
-const Details = (data) => {
+const Details = () => {
     const { currentUser } = React.useContext(AuthUserContext);
+    const { state } = useLocation();
+    const { data } = state
     console.log(data);
     return (
         <Stack sx={{ width: '90vw', height: '85vh', margin: '1rem auto' }}>
@@ -25,7 +27,7 @@ const Details = (data) => {
                 <CardMedia
                     component="img"
                     // sx={{ width: '20rem' }}
-                    height="60%"
+                    height="55%"
                     image={data.imageUrl}
                     alt={data.title}
                 />
@@ -36,7 +38,7 @@ const Details = (data) => {
                     />
                     <CardContent>
                         <Typography variant="body2" color="text.secondary" className='data-content' sx={{ textAlign: 'center' }}>
-                            {(currentUser.metadata.creationTime).slice(5, 16)}
+                            {data.blogCreateTime}
                         </Typography>
                         <Typography variant="body2" className='data-content'>
                             {data.content}
@@ -46,11 +48,11 @@ const Details = (data) => {
                 <CardHeader
                     avatar={
                         <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                            {(currentUser.displayName).slice(0, 1)}
+                            {(data.bloger.blogerName).slice(0, 1)}
                         </Avatar>
                     }
                     // title="Shrimp and Chorizo Paella"
-                    title={currentUser.email}
+                    title={data.bloger.blogerEmail}
                 />
                 <CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">
@@ -70,7 +72,7 @@ const Details = (data) => {
                         sx={{ backgroundColor: 'green' }}
                     >Update</Button>
                     <Button
-                        // onClick={() => DeleteData(data.id)}
+                        onClick={() => DeleteData(data.id)}
                         variant='contained'
                         sx={{ backgroundColor: 'red' }}
                     >Delete</Button>

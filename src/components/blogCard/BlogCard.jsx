@@ -18,7 +18,7 @@ export default function BlogCard({ data }) {
 
     return (
         <Card sx={{ maxWidth: 345 }}>
-            <div onClick={() => navigate('/details', /*! bu şekilde olmadı başka bir yol bulmam lazım => */ { state: data })} style={{ cursor: 'pointer' }}>
+            <div onClick={() => navigate('/details', /*! bu şekilde olmadı başka bir yol bulmam lazım => */ { state: { data } })} style={{ cursor: 'pointer' }}>
                 <CardMedia
                     component="img"
                     height="194"
