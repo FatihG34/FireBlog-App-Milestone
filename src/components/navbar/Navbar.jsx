@@ -43,7 +43,7 @@ const Navbar = () => {
                         <img src={FGlogo} alt="logo" width='100%' onClick={() => navigate('/about')} />
                     </Container>
                     <Container sx={{ display: { xs: 'flex', md: 'none' }, width: '100px' }}>
-                        <img src={FGlogo} alt="" width='100%' />
+                        <img src={FGlogo} alt="FGlogo" width='100%' />
                     </Container>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
