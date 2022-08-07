@@ -5,7 +5,6 @@ import Loading from '../assets/loading.gif'
 
 const Dashboard = () => {
     const { isLoading, dataList } = useFetch();
-    console.log(dataList);
 
     if (isLoading) {
         return <img src={Loading} alt="Loading..." />

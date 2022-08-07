@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router';
 
 export default function BlogCard({ data }) {
     const navigate = useNavigate();
-    console.log('blog card da ki data: ', data)
     return (
         <Card sx={{ maxWidth: 345 }}>
             <div onClick={() => navigate('/details', { state: { data } })} style={{ cursor: 'pointer' }}>

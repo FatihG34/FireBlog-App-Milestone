@@ -1,18 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Grid, Stack, TextField } from '@mui/material';
 import { Box } from '@mui/system';
-import blogimg from '../assets/blockimage.jpg';
-// import { DataBlogContext } from '../context/BlogContext';
 import { UpdateData } from '../helpers/databaseFunctions';
-// import BlogForm from '../components/blogForm/BlogForm';
-// import { AuthUserContext } from '../context/AuthContext';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { DataBlogContext } from '../context/BlogContext';
 
 
 const UpdateBlog = () => {
-    // const { currentUser } = useContext(AuthUserContext)
-    const { setBlogData } = useContext(DataBlogContext)
     const navigate = useNavigate()
     const { state } = useLocation();
     const { data } = state;
@@ -22,7 +15,6 @@ const UpdateBlog = () => {
         e.preventDefault();
         const { name, value } = e.target;
         const blogUpdateTime = (new Date()).toString().slice(4, 16)
-        // const bloger = { blogerId: currentUser.uid, blogerName: currentUser.displayName, blogerEmail: currentUser.email }
         setUpdateData({ ...updateData, [name]: value, blogUpdateTime })
     };
     const handleSubmit = (e) => {
