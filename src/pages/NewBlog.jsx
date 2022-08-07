@@ -26,7 +26,7 @@ const NewBlog = () => {
         addData(blogData);
         navigate('/')
     }
-
+    console.log('newBlog da ki blogData:', blogData)
     return (
         <Box sx={{ display: 'grid', placeContent: 'center' }}>
             <Grid style={{ width: '30rem', padding: '2rem' }}>
@@ -34,7 +34,7 @@ const NewBlog = () => {
                     <img className='blogimg' src={blogimg} alt="blogimage" />
                     <h3>- New Blog -</h3>
                 </Box>
-                <BlogForm handleChange={handleChange} handleSubmit={handleSubmit} />
+                <BlogForm handleChange={handleChange} handleSubmit={handleSubmit} blogData={blogData} />
             </Grid>
         </Box >
     )

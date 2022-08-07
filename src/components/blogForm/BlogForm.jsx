@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import TextField from '@mui/material/TextField';
 import { Button, Stack } from '@mui/material';
-import { DataBlogContext } from '../../context/BlogContext';
 
-const BlogForm = ({ handleChange, handleSubmit }) => {
-    const { blogData } = useContext(DataBlogContext)
+const BlogForm = ({ handleChange, handleSubmit, blogData }) => {
+    console.log('blogForm da ki blogData:', blogData);
     return (
         <form
             onSubmit={handleSubmit}
