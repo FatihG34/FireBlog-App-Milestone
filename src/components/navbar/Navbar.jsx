@@ -39,8 +39,8 @@ const Navbar = () => {
             <Container maxWidth="xl" >
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }} >
 
-                    <Container sx={{ display: { xs: 'none', md: 'flex' }, width: '150px' }}>
-                        <img src={FGlogo} alt="logo" width='100%' />
+                    <Container title='Click for information About Me' sx={{ display: { xs: 'none', md: 'flex' }, width: '150px', cursor: 'pointer' }}>
+                        <img src={FGlogo} alt="logo" width='100%' onClick={() => navigate('/about')} />
                     </Container>
                     <Container sx={{ display: { xs: 'flex', md: 'none' }, width: '100px' }}>
                         <img src={FGlogo} alt="" width='100%' />
