@@ -13,14 +13,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AccountCircleTwoTone } from '@mui/icons-material';
 import { logOut } from '../../helpers/authFunctions';
 import { AuthUserContext } from '../../context/AuthContext';
+// import { Avatar } from '@mui/material';
 
 
 const Navbar = () => {
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const { currentUser } = React.useContext(AuthUserContext)
-    const navigate = useNavigate()
-
-    const settings = currentUser ? ['Profile', 'New', 'Logout'] : ['Login', 'Register'];
+    const navigate = useNavigate();
+    const settings = currentUser ? ['About', 'Profile', 'New', 'Logout'] : ['About', 'Login', 'Register'];
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -54,8 +54,13 @@ const Navbar = () => {
                         {/* <Typography variant='h5'>{currentUser.displayName}</Typography> */}
                         <Tooltip title={currentUser ? "Open Personal Pages" : "Account Pages"}>
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
-                                <AccountCircleTwoTone />
+
+                                {/* {currentUser.photoURL */}
+                                    {/* ? */}
+                                    {/* <Avatar alt="Remy Sharp" src={currentUser.photoURL} /> */}
+                                    {/* : */}
+                                    <AccountCircleTwoTone />
+                                {/* } */}
                             </IconButton>
                         </Tooltip>
                         <Menu
