@@ -6,6 +6,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { signIn, forgotPassword, signUpProvider } from '../helpers/authFunctions';
 import { useNavigate } from 'react-router-dom'
+import Toastify from '../helpers/toastify';
 
 
 const Login = () => {
@@ -30,7 +31,8 @@ const Login = () => {
                         signIn(values.email, values.password, navigate);
 
                         action.resetForm();
-                        action.setSubmitting(false)
+                        action.setSubmitting(false);
+                        Toastify('Logined successfully')
                     }}
                 >
                     {({ values, handleChange, errors, touched, handleBlur }) => (

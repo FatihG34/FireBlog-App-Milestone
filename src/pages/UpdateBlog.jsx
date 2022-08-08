@@ -3,6 +3,7 @@ import { Button, Grid, Stack, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import { UpdateData } from '../helpers/databaseFunctions';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Toastify from '../helpers/toastify';
 
 
 const UpdateBlog = () => {
@@ -20,7 +21,8 @@ const UpdateBlog = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         UpdateData(updateData)
-        navigate('/')
+        navigate('/');
+        Toastify('You have updated the Blog Content successfully')
     }
     console.log(updateData);
     return (

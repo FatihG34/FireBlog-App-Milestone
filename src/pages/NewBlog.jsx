@@ -7,6 +7,7 @@ import { addData } from '../helpers/databaseFunctions';
 import BlogForm from '../components/blogForm/BlogForm';
 import { AuthUserContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Toastify from '../helpers/toastify';
 
 
 const NewBlog = () => {
@@ -24,7 +25,8 @@ const NewBlog = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         addData(blogData);
-        navigate('/')
+        navigate('/');
+        Toastify('You have added a new Blog Content successfully')
     }
     console.log('newBlog da ki blogData:', blogData)
     return (

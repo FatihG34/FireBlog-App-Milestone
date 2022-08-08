@@ -7,6 +7,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { createUser } from '../helpers/authFunctions';
 import { useNavigate } from 'react-router-dom'
+import Toastify from '../helpers/toastify';
 
 const Register = () => {
     const navigate = useNavigate()
@@ -31,7 +32,8 @@ const Register = () => {
                         createUser(values.email, values.password, navigate, displayName);
 
                         action.resetForm();
-                        action.setSubmitting(false)
+                        action.setSubmitting(false);
+                        Toastify('Registered successfully')
                     }}
                 >
                     {({ values, handleChange, errors, touched, handleBlur }) => (
