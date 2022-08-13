@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Grid, Stack, TextField } from '@mui/material';
+import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import { UpdateData } from '../helpers/databaseFunctions';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Toastify from '../helpers/toastify';
+import BlogForm from '../components/blogForm/BlogForm';
 
 
 const UpdateBlog = () => {
@@ -32,45 +33,7 @@ const UpdateBlog = () => {
                     <img width={300} src={data.imageUrl} alt="blogimage" />
                     <h3>- Update Blog -</h3>
                 </Box>
-                <form
-                    onSubmit={handleSubmit}
-                >
-                    <Stack spacing={3} direction='column' >
-                        <TextField
-                            label='Title *'
-                            type='text'
-                            name='title'
-                            value={updateData.title}
-                            id="outlined-size-normal"
-                            required
-                            onChange={(e) => handleChange(e)}
-                        />
-                        <TextField
-                            label='Image URL *'
-                            type='url'
-                            name='imageUrl'
-                            value={updateData.imageURL}
-                            id="outlined-size-normal"
-                            onChange={handleChange}
-                            // onChange={handleChange} same with above
-                            required
-                        />
-                        <TextField
-                            label='Content *'
-                            name='content'
-                            value={updateData.content}
-                            multiline
-                            rows={12}
-                            maxRows={18}
-                            onChange={handleChange}
-                        />
-                        <Button
-                            variant='contained'
-                            type='submit'
-                            value='submit'
-                        >Update</Button>
-                    </Stack>
-                </form>
+                <BlogForm handleChange={handleChange} handleSubmit={handleSubmit} blogData={updateData} />
             </Grid>
         </Box >
     )
