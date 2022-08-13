@@ -1,7 +1,27 @@
-# Contact App
+# FireBlog App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Description : In This Project Applied Firebase Realtime Database
+- *In This Project Applied Firebase Realtime Database*
 
-### This project is Front-End course Final Project
+### I have used to
+
+- Firebase Realtime Database,
+
+- Firebase Authentication,
+
+- Local state and Global state : ContextApi,
+
+- Material UI,
+
+- Formik and Yup for form validation,
+
+- React-Router
+
+## Outcome
+
+If you want to see details on this app, [You can visit Here](https://fire-blog-app-milestone.vercel.app/).
+
+![Project Snapshot](./src/assets/fireblogapp.gif)
+
+**<p align="center">&#9786; Thanks for visiting &#9997;</p>**
