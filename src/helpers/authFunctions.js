@@ -1,5 +1,15 @@
 import firebase from "./firebase";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import { 
+    createUserWithEmailAndPassword, 
+    getAuth, 
+    GoogleAuthProvider, 
+    onAuthStateChanged, 
+    sendPasswordResetEmail, 
+    signInWithEmailAndPassword, 
+    signInWithPopup, 
+    signOut, 
+    updateProfile 
+} from 'firebase/auth'
 
 
 
